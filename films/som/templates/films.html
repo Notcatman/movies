@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Films{% endblock %}
+
+{% block page_css %}
+body {
+    background: none;
+    background-image: url(/static/images/iron.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.top {
+    width: 900px;
+    height: auto;
+    padding: 15px;
+    background: rgba(0,0,0,0.4);
+    border-color: #333;
+    backdrop-filter: blur(50px);
+    
+}
+
+.top .info {
+    position: static;             
+    margin-top: 20px;
+    display: inline-block;
+    background: hsl(20, 2%, 72%);
+}
+
+.top .info:hover {
+    background: gray;
+}
+
+
+.top h1 { color: #fff; text-shadow: 2px 2px 0 #000; }
+.top h3 { color: #fff; text-shadow: 2px 2px 0 #000; font-size: 30px;}
+.top p { color: #eee; text-shadow: 1px 1px 0 #000; }
+{% endblock %}
+
+{% block top %}
+<div class="top">
+    <h1>Movies</h1>
+    <p>Browse all movies below.</p>
+        {% for mov in context %}
+            <h3>
+                {{ mov.title }} — {{ mov.rating }}
+                {% if mov.rating >= 8 %}
+                    <span class="badge">Top rated</span>
+                {% elif mov.rating < 8 %}
+                    <span class="badge">Standard movie</span>
+                {% endif %}
+            </h3>
+        {% endfor %}
+    <a href="/" class="info">Back</a>
+</div>
+{% endblock %}

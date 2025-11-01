@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}no{% endblock %}</title>
+    <link rel="icon" href="/static/images/pop.png">
+</head>
+    <style>
+
+        body {
+            background: linear-gradient(90deg, hsl(323, 43%, 85%), hsl(51, 37%, 86%));
+            background-image: url(/static/images/nus.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: sou;
+        }
+
+        *::selection {
+            background-color: hsla(292, 99%, 68%, 0.213);
+
+        }
+
+        @font-face {
+            font-family: sou;
+            src: url(/static/fonts/piz.ttf);
+        }
+
+        @keyframes anim{
+            from{
+                opacity: 0;
+                transform: translateY(-500px) rotateZ(-4deg);
+            }to{
+                transform: translateY(0) rotateZ(0);
+                opacity: 1;
+            }
+        }
+
+
+        .top {
+            margin: auto;
+            margin-top: 150px;
+            background: linear-gradient(90deg, hsl(30, 100%, 75%),rgb(225, 180, 83));
+            width: 800px;
+            height: 600px;
+            border: 3px groove rgb(76, 74, 74);
+            border-radius: 20px;
+            text-align: center;
+            animation: anim 1.5s cubic-bezier(0, 0, 0.2, 1);
+            
+        }
+
+        .top h1 {
+            font-size: 70px;
+            color: hsl(227, 46%, 22%);
+            text-shadow: 2px 2px 1px hsl(0, 79%, 55%);
+        }
+
+        .top p {
+            font-size: 40px;
+            color: hsl(227, 46%, 22%);
+            text-shadow: 2px 2px 1px hsl(0, 79%, 55%);
+        }
+
+        .top img {
+            height: 353px;
+            margin-top: -45px;
+            margin-right: -590px;
+        }
+
+        .top .info {
+            font-size: 50px;
+            color: hsl(0, 0%, 100%);
+            text-shadow: 3px 3px 1px hsl(0, 86%, 63%);
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 35px;
+            border: 2px solid hsla(0, 2%, 19%, 0.316);
+            transition: 0.5s ease;
+            position: relative;
+            top: -150px;
+            background: hsl(21, 100%, 68%);
+            display: inline-block;
+        }
+
+        .top .info:hover {
+            transform: translateY(-7px);
+            border-radius: 0px;
+            background: hsl(21, 100%, 56%);
+            transition: 0.5s ease;
+            cursor: pointer;
+        }
+
+
+        {% block page_css %}{% endblock %}
+    </style>
+<body>
+    {% block content %}
+        {% block top %}
+        <div class="top">
+            <h1>Welcome</h1>
+            <p>This is home page. Click below to see all movies.</p>
+
+            <img src="/static/images/car.png">
+
+            <a href="/films" class="info">
+                Movies
+            </a>
+        </div>
+        {% endblock %}
+    {% endblock %}
+    
+    
+</body>
+</html>
